@@ -26,7 +26,7 @@ client = discord.Client(description=desc)
 async def on_message(message: discord.Message):
     if message.author.bot:
         return
-    if any([word in message.content.lower() for word in config['words']]):
+    if any([word.lower() in message.content for word in config['words']]):
         await client.send_message(message.channel, '{}: {}'.format(message.author.mention, config['response']))
 
 
